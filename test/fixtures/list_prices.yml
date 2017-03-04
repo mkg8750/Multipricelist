@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lis_default_mark: MyString
+  lis_description: MyString
+
+two:
+  lis_default_mark: MyString
+  lis_description: MyString

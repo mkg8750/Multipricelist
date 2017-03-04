@@ -1,0 +1,68 @@
+
+<div class="main">
+	<div class="header-edit">
+		<span class="v-center price-list-label" >PRICE LISTS</span>
+		<div class="menu-bar v-center">
+		<%=link_to "Guardar", "javascript:void(0)", class: "btn btn-success btn-sm margin-l-r-5" , id: "price_form_btn"%>
+		
+		<%=link_to "Cancelar", root_path, class: "btn btn-warning btn-sm margin-l-r-5" , id: "price_form"%>
+		
+		</div>
+	</div>
+	
+	<%=form_for :price ,url: list_price_path(@list), method: :put ,html:{id: 'edit_price_form_submit'} do |f| %>
+	<div class="price-search-bar">
+		<div class="row">
+			<div class="form-group col-sm-10">
+			
+			<label for="price">PRICE LIST NAME</label>
+			<%=f.text_field :lis_description ,class: "form-control" ,value:@list.lis_description %>
+			
+			</div>
+			
+			<label class="col-sm-2 price-search-cbox">
+			<%=check_box_tag :lis_default_mark ,true,false,checked:true %>Default Price List	
+		</div>
+	</div>
+	
+	<div class="main-content">
+		<div class="table-responsive"> 
+					
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+					<th>SERVICES</th>
+						<% @category_array.each do |cats|%>
+						<th><%= cats.cat_description %></th>
+						<% end %>
+					</tr>
+				</thead>
+				<tbody>
+				<% @array.each do |services|%>
+					<% services.each do |service, cats| %>
+					<tr>
+						<td><%= service.values.join('') %></td>
+						<% cats.each do |cat, price|%>
+						<td class="td-input">
+		<input type="" name="list_price[<%=service.keys%>][<%=cat%>]" class="form-control inputbox price_text" value="<%=price%>" maxlength="10">
+
+						</td>
+						<% end %>
+						
+					</tr>
+					<%end%>
+				<% end %>	
+				</tbody>
+			</table>
+			<%end%>
+			<!-- </form> -->
+		</div>
+	</div>
+</div>
+
+  <script type="text/javascript">
+    $("#price_form_btn").click(function(){
+      $("#edit_price_form_submit").submit();
+    });
+    
+  </script>

@@ -1,0 +1,2 @@
+module ListPricesHelper
+end
