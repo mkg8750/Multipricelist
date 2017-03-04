@@ -17,7 +17,7 @@
 				<%=f.text_field :list_description ,class: "form-control", maxlength:"100" %>
 			</div>
 
-			<%= f.check_box :lis_default_mark,{},true,false %>
+			<%= f.check_box :lis_default_mark,{},false,true %> Mark default
 
 
 		</div>
@@ -61,4 +61,6 @@
       $("#price_form_submit").submit();
     });
     
+
+
   </script>

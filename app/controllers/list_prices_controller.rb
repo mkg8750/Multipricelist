@@ -22,7 +22,7 @@ class ListPricesController < ApplicationController
 
     
       cat.each do |cats, price|
-        ListPriceDetail.create(category_id:cats, service_id:ser,list_price_id: @list_price.id, listprice: price)
+        ListPriceDetail.create(category_pkcategory:cats, service_pkservice:ser,list_price_pklist: @list_price.id, listprice: price)
       end
     end
     flash[:success] = "List Price created Successfully."
@@ -35,15 +35,15 @@ class ListPricesController < ApplicationController
     @category_array = Category.all
     @list = ListPrice.find_by(pklist:params[:pklist])
     listpricedetails = @list.list_price_details.includes(:service,:category)
-  	service_array = listpricedetails.each.map(&:service_id).uniq
-    category_array = listpricedetails.each.map(&:category_id).uniq
+  	service_array = listpricedetails.each.map(&:service_pkservice).uniq
+    category_array = listpricedetails.each.map(&:category_pkcategory).uniq
 
     service_array.each do |service|
       @price = {}
-      servicelists = listpricedetails.where(service_id:service, list_price_id:@list.id).first
+      servicelists = listpricedetails.where(service_pkservice:service, list_price_pklist:@list.id).first
       category_array.each do |cats|
 
-            lists = listpricedetails.where(service_id:service,category:cats)
+            lists = listpricedetails.where(service_pkservice:service,category:cats)
             lists.each do |list|
                @price[cats] = list.listprice
             end
@@ -58,9 +58,7 @@ class ListPricesController < ApplicationController
     @list_price.update_attributes(lis_description: params[:price][:lis_description], lis_default_mark: params[:lis_default_mark])
     params[:list_price].each do |ser, cat|
       cat.each do |cats, price|
-        if price.present?
-          ListPriceDetail.find_by(service_id: ser,category_id: cats, list_price_id:@list_price.id).update(listprice: price)
-        end
+          ListPriceDetail.find_by(service_pkservice: ser,category_pkcategory: cats, list_price_pklist:@list_price.id).update(listprice: price)
       end
     end
     flash[:success] = "List Price Updated Successfully."

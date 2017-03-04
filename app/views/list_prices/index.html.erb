@@ -43,7 +43,7 @@
                         <td><%= price.lis_description %></td>
                         <td>
                             <div class="checkbox no-margin">
-                                <%= check_box("price_mark", price.pklist, {checked: price.lis_default_mark, class:"margin-l-0"}) %>
+                                <%= check_box("price_mark", price.pklist, {checked: price.lis_default_mark ? "checked" : "", class:"margin-l-0"}) %>
                             </div>
                         </td>
                         <td>

@@ -18,9 +18,9 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
 @import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css);
 /*common*/
-.no-margin{margin:0px !important;}
-.no-padding{padding: 0px !important;}
-.margin-l-0{margin-left: 0px !important; }
+.no-margin{margin:0px;}
+.no-padding{padding: 0px;}
+.margin-l-0{margin-left: 30px !important; }
 .v-center{display: flex;align-items: center;}
 .f-size-2{font-size: 2em;}
 .margin-l-r-5{margin:0 5px;}
@@ -30,8 +30,8 @@
 #price_lis_default_mark{  margin-top: 35px;
 }
 ul{list-style: none;}
-body{font-family: 'Open Sans Condensed', sans-serif;}
-table thead tr:first-child{background: #2d5771;color: #fff;}
+body{font-family: Verdana,Geneva,sans-serif;}
+table thead tr:first-child{background: #0466a3;color: #fff4f4;}
 table thead{border: 2px solid #2d5771;}    
 
 
